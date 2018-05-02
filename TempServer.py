@@ -13,8 +13,9 @@ sensor = '/sys/bus/w1/devices/22-00000047ad7c/w1_slave'
 class TemperatureServer:
     """ docstring """
     def __init__(self):
-        self.log_file = open("/home/pi/tempServer.log", 'a')
-        # self.log_file = open("tempServer.log", 'w')
+        log_file_name = time.strftime('TempServer%Y%m%d.log')
+        self.log_file = open(log_file_name, 'a')
+        # self.log_file = open("TempServer.log", 'w')
         self.log_file.write('TempServer started\n')
         self.temp_sensor = open(sensor, 'r')
         self.temp_string = '0.00 C'
